@@ -32,7 +32,7 @@ export default function Sidebar({ toggleHandler }) {
                 </div>
             </div>
             <div className="sidebar_menu">
-                <div className="sidebar_menu_item">
+                {/* <div className="sidebar_menu_item">
                     <Link>
                         <img src="/images/chart-pie 01.svg" alt="" />
                         <p>Assets</p>
@@ -55,9 +55,9 @@ export default function Sidebar({ toggleHandler }) {
                         <img src="/images/target.svg" alt="" />
                         <p>Ads</p>
                     </Link>
-                </div>
+                </div> */}
                 <div className="sidebar_menu_item">
-                    <Link to={'/generate-model'} onClick={() => setActiveMenu('Generate')} className={`${activeMenu == 'Generate' ? 'active' : ''}`}>
+                    <Link to={'/generate-model'} onClick={() => setActiveMenu('Generate')} className={`${activeMenu == 'Generate' ? 'active' : ''} active`}>
                         <img src="/images/target.svg" alt="" />
                         <p>Generate Model</p>
                     </Link>

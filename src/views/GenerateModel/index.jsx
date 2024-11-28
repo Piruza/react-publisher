@@ -72,6 +72,12 @@ const GenerateModelView = () => {
         handleUpload(file)
     };
 
+    useEffect(() => {
+        if(openVideoModal || showCanvas){
+            setOpenContextMenu(false)
+        }
+    }, [openVideoModal, showCanvas])
+
     const handleUpload = async selectedFile => {
 
         if(uploadStatus == 'done') return 
@@ -95,16 +101,17 @@ const GenerateModelView = () => {
 
             await axios.post(
                 // 'http://localhost:5173/generate',
+                // 'http://localhost:8080/api/geoPlus/generate-video-model',
                 'https://satesto.top/api/geoPlus/generate-video-model',
-                // 'http://35.158.155.52:5000/process',
                 fd,
                 {
                     onUploadProgress: (prg) => {
-                        const percentCompleted = Math.round(prg.loaded * 100) / prg.total
+                        const percentCompleted = Math.round(Math.round(prg.loaded * 100) / prg.total)
                         setProgress(percentCompleted)
                     }
                 }
             ).then((res) => {
+                console.log(res)
                 setUploadedFiles(res.data)
                 setUploadStatus('done')
             }).catch(() => {
@@ -203,10 +210,10 @@ const GenerateModelView = () => {
 
                                                 { openContextMenu && (
                                                     <div className={`tab_dropdown show`}>
-                                                        <div className="tab_dropdown_item" onClick={() => uploadedFiles.length > 0 ? setOpenVideoModal(true) : null } style={{ textAlign: 'left' }}>
+                                                        <div className="tab_dropdown_item" onClick={() => uploadedFiles?.video  ? setOpenVideoModal(true) : null } style={{ textAlign: 'left' }}>
                                                             <p>Opend Video</p>
                                                         </div>
-                                                        <div className="tab_dropdown_item"  onClick={() => uploadedFiles.length > 1 ? setShowCanvas(true) : null } style={{ textAlign: 'left' }}>
+                                                        <div className="tab_dropdown_item"  onClick={() => uploadedFiles?.fbx  ? setShowCanvas(true) : null } style={{ textAlign: 'left' }}>
                                                             <p>Opend 3D in browser</p>
                                                         </div>
                                                         <div className="tab_dropdown_item" style={{ textAlign: 'left' }}>
@@ -228,21 +235,21 @@ const GenerateModelView = () => {
                     <>
                         <Canvas style={{ height: '650px', marginBottom: '30px'}}>
                             <Suspense fallback={null}>
-                                <Scene src={uploadedFiles[1]} />
+                                <Scene src={uploadedFiles.fbx} />
                                 <OrbitControls />
                                 <Environment preset="forest" background />
                             </Suspense>
                         </Canvas>
                         
                         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                            <button className="video_modal_btn" style={{backgroundColor: '#29BEC4'}} onClick={() => open(uploadedFiles[1], '_blank')}>Download Model</button>
+                            <button className="video_modal_btn" style={{backgroundColor: '#29BEC4'}} onClick={() => open(uploadedFiles.fbx, '_blank')}>Download Model</button>
                             <button className="video_modal_btn" style={{backgroundColor: '#29BEC4'}} onClick={() => setShowCanvas(false)}>Close Canvas</button>
                         </div>
                     </>
                 )}
             </div>
 
-            { openVideoModal && <VideoModal src={uploadedFiles[0]} close={() => setOpenVideoModal(false)} /> }
+            { openVideoModal && <VideoModal src={uploadedFiles.video} close={() => setOpenVideoModal(false)} /> }
             
         </>
     )
