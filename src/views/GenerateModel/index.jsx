@@ -38,7 +38,7 @@ const GenerateModelView = () => {
     const[uploadedFiles, setUploadedFiles] = useState([])
     const[selectedFile, setSelectedFile] = useState({})
     const[progress, setProgress] = useState(0)
-    const[uploadStatus, setUploadStatus] = useState('done')
+    const[uploadStatus, setUploadStatus] = useState('Upload')
     const fileTypes = ["mp4", "avi", "webm", "mov", "wmv"];
 
     const [time, setTime] = useState(0);
