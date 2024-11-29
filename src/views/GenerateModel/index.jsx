@@ -101,7 +101,7 @@ const GenerateModelView = () => {
             fd.append('video', selectedFile)
 
             await axios.post(
-                'http://35.158.155.52:5000/process',
+                'https://generate.volories.com/process',
                 // 'http://localhost:8080/api/geoPlus/generate-video-model',
                 // 'https://satesto.top/api/geoPlus/generate-video-model',
                 fd,
