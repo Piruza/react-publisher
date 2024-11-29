@@ -36,7 +36,7 @@ const GenerateModelView = () => {
 
     const[openContextMenu, setOpenContextMenu] = useState(false)
     const[uploadedFiles, setUploadedFiles] = useState([])
-    const[selectedFile, setSelectedFile] = useState({})
+    const[selectedFile, setSelectedFile] = useState(null)
     const[progress, setProgress] = useState(0)
     const[uploadStatus, setUploadStatus] = useState('Upload')
     const fileTypes = ["mp4", "avi", "webm", "mov", "wmv"];
