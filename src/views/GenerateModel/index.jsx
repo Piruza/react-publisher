@@ -24,9 +24,10 @@ export default function GenerateModel() {
 }
 
 const Scene = ({src}) => {
-    const fbx = useLoader(FBXLoader, src);
-  
-    return <primitive object={fbx} scale={0.01}  crossorigin="anonymous"/>;
+    const fbx = useLoader(FBXLoader, '/fbx/1aa90c8f-1e7f-4d70-af50-049c4d7590e6.fbx');
+    
+    return <primitive object={fbx} scale={0.01}  />;
+    // return <primitive object={fbx} scale={0.01}  crossorigin="anonymous"/>;
 };
 
 const GenerateModelView = () => {
@@ -35,9 +36,9 @@ const GenerateModelView = () => {
 
     const[openContextMenu, setOpenContextMenu] = useState(false)
     const[uploadedFiles, setUploadedFiles] = useState([])
-    const[selectedFile, setSelectedFile] = useState(null)
+    const[selectedFile, setSelectedFile] = useState({})
     const[progress, setProgress] = useState(0)
-    const[uploadStatus, setUploadStatus] = useState('Upload')
+    const[uploadStatus, setUploadStatus] = useState('done')
     const fileTypes = ["mp4", "avi", "webm", "mov", "wmv"];
 
     const [time, setTime] = useState(0);
@@ -100,9 +101,9 @@ const GenerateModelView = () => {
             fd.append('video', selectedFile)
 
             await axios.post(
-                // 'http://localhost:5173/generate',
+                'http://35.158.155.52:5000/process',
                 // 'http://localhost:8080/api/geoPlus/generate-video-model',
-                'https://satesto.top/api/geoPlus/generate-video-model',
+                // 'https://satesto.top/api/geoPlus/generate-video-model',
                 fd,
                 {
                     onUploadProgress: (prg) => {
@@ -213,7 +214,7 @@ const GenerateModelView = () => {
                                                         <div className="tab_dropdown_item" onClick={() => uploadedFiles?.video  ? setOpenVideoModal(true) : null } style={{ textAlign: 'left' }}>
                                                             <p>Opend Video</p>
                                                         </div>
-                                                        <div className="tab_dropdown_item"  onClick={() => uploadedFiles?.fbx  ? setShowCanvas(true) : null } style={{ textAlign: 'left' }}>
+                                                        <div className="tab_dropdown_item"  onClick={() => true  ? setShowCanvas(true) : null } style={{ textAlign: 'left' }}>
                                                             <p>Opend 3D in browser</p>
                                                         </div>
                                                         <div className="tab_dropdown_item" style={{ textAlign: 'left' }}>
@@ -235,7 +236,7 @@ const GenerateModelView = () => {
                     <>
                         <Canvas style={{ height: '650px', marginBottom: '30px'}}>
                             <Suspense fallback={null}>
-                                <Scene src={uploadedFiles.fbx} />
+                                <Scene src={null} />
                                 <OrbitControls />
                                 <Environment preset="forest" background />
                             </Suspense>
