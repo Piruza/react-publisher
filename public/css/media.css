@@ -1,0 +1,139 @@
+@media screen and (max-width: 992px){
+    #sidebar{
+        width: 160px;
+        padding: 20px 10px;
+    }
+
+    .sidebar_menu_item > a{
+        font-size: 12px;
+        padding: 8px;
+        border-radius: 6px;
+    }
+
+    .sidebar_menu_item > a > p{
+        font-size: 12px;
+    }
+
+    .sidebar_menu_item > a > img{
+        margin-right: 8px;
+    }
+
+    .layout_wrapper{
+        width: calc(100% - 190px);
+    }
+
+    .generate_wrapper_title{
+        width: auto;
+    }
+
+    .file-btn{
+        width: calc(100% - 64px);
+    }
+
+    .generate_container{
+        padding: 30px 20px;
+        width: calc(100% - 60px);
+    }
+
+    .layout_content{
+        padding: 30px 20px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .generate_wrapper_title > p, .file-btn p{
+        font-size: 12px;
+    }
+
+    #sidebar{
+        width: 80px !important;
+    }
+
+    .sidebar_menu_item > a > p{
+        display: none;
+    }
+
+    .sidebar_menu_item > a{
+        display: flex;
+        justify-content: center;
+    }
+
+    .sidebar_collapse{
+        display: none;
+    }
+
+    .sibebar_top{
+        margin-bottom: 8px;
+    }
+
+    .layout_wrapper {
+        width: calc(100% - 110px);
+    }
+
+    .file-btn img {
+        height: 64px;
+        margin-bottom: 20px;
+    }
+
+    .layout_content{
+        padding: 30px 10px;
+    }
+
+    .video_modal > video{
+        width: 90%;
+        height: 385px;
+    }
+
+    .generate_wrapper > div:first-child{
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    #sidebar {
+        width: 50px !important;
+    }
+
+    .sidebar_toggle .logo {
+        margin-bottom: 0;
+    }
+
+    .layout_wrapper {
+        width: calc(100% - 80px);
+    }
+
+    .generate_container{
+        padding: 20px 10px;
+        width: calc(100% - 30px);
+    }
+
+    .response-item h6{
+        font-size: 12px;
+    }
+
+    .close-btn img{
+        width: 24px;
+    }
+
+    .file-btn {
+        width: calc(100% - 40px);
+        padding: 20px;
+    }
+
+    .response-info{
+        padding: 8px;
+        width: calc(100% - 16px);
+    }
+
+    .video_modal > video{
+        width: 90%;
+        height: 300px;
+    }
+
+    .video_modal_btn{
+        font-size: 12px;
+        margin: 0 2px;
+        padding: 6px 10px;
+    }
+}

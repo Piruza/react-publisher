@@ -45,25 +45,6 @@ export default function DashboardLayout({ activePage = null, children }) {
 
 	const dispatch = useDispatch();
 
-	useEffect(() => {
-	  const auth_token = localStorage.getItem('auth_token')
-  
-	  Axios.post(`${api_url}/me`, {}, {headers: {
-		'Authorization': `Bearer ${auth_token}` 
-	  }}).then(res => {
-		if(res.data.api_token) {
-		  dispatch({
-			type: 'PROFILE',
-			payload: res.data
-		  });
-  
-		}
-	  }).catch(err => {
-		localStorage.removeItem('auth_token');
-	  })
-  
-	}, [dispatch]);
-
 
 	const handleClick = () => {
 		if(userState.isAuthenticated){
