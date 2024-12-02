@@ -136,4 +136,14 @@
         margin: 0 2px;
         padding: 6px 10px;
     }
+
+
+}
+
+
+@media screen and (max-width: 325px){
+    .file-btn img {
+        height: 24px;
+        margin-bottom: 10px;
+    }
 }

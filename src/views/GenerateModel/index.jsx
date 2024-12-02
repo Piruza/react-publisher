@@ -217,7 +217,7 @@ const GenerateModelView = () => {
                                                         <div className="tab_dropdown_item"  onClick={() => true  ? setShowCanvas(true) : null } style={{ textAlign: 'left' }}>
                                                             <p>Opend 3D in browser</p>
                                                         </div>
-                                                        <div className="tab_dropdown_item" style={{ textAlign: 'left' }}>
+                                                        <div className="tab_dropdown_item" onClick={() => open(uploadedFiles.animation_maya, '_blank')} style={{ textAlign: 'left' }}>
                                                             <p>Download Maia File</p>
                                                         </div>
                                                     </div>
